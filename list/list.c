@@ -102,11 +102,11 @@ void list_add_to_front(list_t *l, elem value) {
 
 void list_add_at_index(list_t *l, elem value, int index) {
 
-  if (index < 0 || index >= list_length(l)) {
+  if (index < 1 || index > list_length(l)) {
     return;
   };
 
-  if (index == 0) {
+  if (index == 1) {
     list_add_to_front(l, value);
     return;
   }
@@ -114,7 +114,7 @@ void list_add_at_index(list_t *l, elem value, int index) {
   node_t *new_node = (node_t *) getNode(value);
   new_node->value = value;
   node_t *curr = l->head;
-  int ind = 0;
+  int ind = 1;
 
   while (ind < index - 1) {
     if (curr == NULL) {
@@ -174,12 +174,12 @@ elem list_remove_at_index(list_t *l, int index) {
     return -1;
   }
 
-  if (index == 0) {
+  if (index == 1) {
     return list_remove_from_front(l);
   }
 
   node_t *curr = l->head;
-  int ind = 0;
+  int ind = 1;
 
   while (curr != NULL && ind != index - 1) {
     curr = curr->next;
@@ -217,7 +217,7 @@ elem list_get_elem_at(list_t *l, int index) {
   
   node_t *curr;
   curr = l->head;
-  int ind = 0;
+  int ind = 1;
 
   while (curr != NULL && ind != index) {
     curr = curr->next;
@@ -235,7 +235,7 @@ int list_get_index_of(list_t *l, elem value) {
   
   node_t *curr;
   curr = l->head;
-  int index = 0;
+  int index = 1;
 
   while (curr != NULL) {
     if (curr->value == value) {
